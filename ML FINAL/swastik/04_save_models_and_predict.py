@@ -136,6 +136,11 @@ def train_and_save_models():
     # Remove IsHoliday from features for regression
     X_reg = X.drop(columns=["IsHoliday"])
     
+    # Remove Store and Dept for classification (to prevent overfitting/leakage)
+    # ALSO REMOVE 'Week' and 'Year' to prevent calendar memorization
+    cols_to_drop = ['Store', 'Dept', 'Week', 'Year']
+    X_class = X.drop(columns=[c for c in cols_to_drop if c in X.columns])
+    
     # Scale Features - SEPARATE SCALERS for regression and classification
     print("\nScaling features...")
     scaler_reg = StandardScaler()
@@ -144,12 +149,12 @@ def train_and_save_models():
     
     # For classification, keep all features
     scaler_class = StandardScaler()
-    X_class_scaled = scaler_class.fit_transform(X)
-    X_class_scaled = pd.DataFrame(X_class_scaled, columns=X.columns)
+    X_class_scaled = scaler_class.fit_transform(X_class)
+    X_class_scaled = pd.DataFrame(X_class_scaled, columns=X_class.columns)
     
     # Save feature names and scalers
     feature_names_reg = list(X_reg.columns)
-    feature_names_class = list(X.columns)
+    feature_names_class = list(X_class.columns)
     
     joblib.dump(scaler_reg, os.path.join(MODEL_DIR, "scaler_regression.pkl"))
     joblib.dump(scaler_class, os.path.join(MODEL_DIR, "scaler_classification.pkl"))
