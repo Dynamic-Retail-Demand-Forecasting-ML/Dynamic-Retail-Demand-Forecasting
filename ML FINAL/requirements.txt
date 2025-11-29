@@ -1,0 +1,1 @@
+pandas\nnumpy\nscikit-learn\nmatplotlib\nxgboost\nlightgbm\nprophet\n
