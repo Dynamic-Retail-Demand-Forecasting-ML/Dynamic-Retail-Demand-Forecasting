@@ -46,7 +46,7 @@
 | Role | Team Member | GitHub / Portfolio |
 |:--- |:--- |:--- |
 | **Problem Statement** | **Pankaj Agarwal** | [@pank4ja](https://github.com/pank4ja) |
-| **Model Creation & Training** | **Swastik Bharadwaj** | [@swastik7781](https://github.com/swastik7781) |
+| **Model Creation,Training & Testing, Performance Evaluation, Visualisation, UI integration** | **Swastik Bharadwaj** | [@swastik7781](https://github.com/swastik7781) |
 | **Data Cleaning (Some Part), Frontend, Backend, API, Deployment, Slides** | **Tarnala Sribatsa Patro** | [Portfolio](https://sribatsa.vercel.app/) |
 
 ---
