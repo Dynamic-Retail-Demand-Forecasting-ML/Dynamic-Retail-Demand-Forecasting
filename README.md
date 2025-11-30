@@ -47,7 +47,7 @@
 |:--- |:--- |:--- |
 | **Problem Statement** | **Pankaj Agarwal** | [@pank4ja](https://github.com/pank4ja) |
 | **Model Creation & Training** | **Swastik Bharadwaj** | [@swastik7781](https://github.com/swastik7781) |
-| **Data Cleaning, Frontend, Backend, API, Deployment, Slides** | **Tarnala Sribatsa Patro** | [Portfolio](https://sribatsa.vercel.app/) |
+| **Data Cleaning (Some Part), Frontend, Backend, API, Deployment, Slides** | **Tarnala Sribatsa Patro** | [Portfolio](https://sribatsa.vercel.app/) |
 
 ---
 
