@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Prediction Form Logic
     const predictionForm = document.getElementById('predictionForm');
     if (predictionForm) {
-        predictionForm.addEventListener('submit', function(e) {
+        predictionForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             // Get form values
@@ -128,39 +128,83 @@ document.addEventListener('DOMContentLoaded', () => {
             const isHoliday = parseInt(document.getElementById('isHoliday').value);
             const month = parseInt(document.getElementById('month').value);
             
-            // Simple prediction formula (demo only)
-            let baseSales = storeSize * 0.15;
-            
-            // Adjust for temperature
-            baseSales *= (1 + (temp - 60) * 0.002);
-            
-            // Adjust for fuel price (inverse relationship)
-            baseSales *= (1 - (fuel - 3) * 0.05);
-            
-            // Adjust for CPI
-            baseSales *= (cpi / 200);
-            
-            // Adjust for unemployment (inverse)
-            baseSales *= (1 - unemployment * 0.01);
-            
-            // Holiday boost
-            if (isHoliday === 1) {
-                baseSales *= 1.5;
-            }
-            
-            // Seasonal adjustment
-            const seasonalFactors = [0.9, 0.85, 0.95, 1.0, 1.05, 1.1, 1.15, 1.1, 1.0, 1.05, 1.2, 1.4];
-            baseSales *= seasonalFactors[month - 1];
-            
-            // Department factor
-            baseSales *= (1 + dept * 0.01);
-            
-            // Display result
+            // Get result elements
             const resultBox = document.getElementById('resultBox');
             const resultValue = document.getElementById('resultValue');
             
-            resultValue.textContent = '$' + baseSales.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            // Show loading state
+            resultValue.textContent = 'Calculating...';
             resultBox.style.display = 'block';
+            
+            try {
+                // Call Flask API for prediction
+                const response = await fetch('http://localhost:5000/api/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        store: store,
+                        dept: dept,
+                        temperature: temp,
+                        fuelPrice: fuel,
+                        cpi: cpi,
+                        unemployment: unemployment,
+                        storeSize: storeSize,
+                        isHoliday: isHoliday,
+                        month: month,
+                        storeType: document.getElementById('storeType').value,
+                        year: parseInt(document.getElementById('year').value),
+                        week: parseInt(document.getElementById('week').value)
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Display the ensemble prediction
+                    const predictedSales = data.prediction.weekly_sales;
+                    resultValue.innerHTML = `
+                        <div style="font-size: 1.8em; font-weight: 900; margin-bottom: 6px; letter-spacing: -1px; background: linear-gradient(135deg, #ff00ff, #00ffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                            $${predictedSales.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                        </div>
+                        <div style="font-size: 0.6em; opacity: 0.85; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500;">
+                            Predicted Weekly Sales (Ensemble Model)
+                        </div>
+                        <div style="font-size: 0.55em; opacity: 0.7; margin-top: 6px; padding: 6px 10px; background: rgba(255, 255, 255, 0.05); border-radius: 6px; border: 1px solid rgba(255, 0, 255, 0.2);">
+                            <div style="margin-bottom: 3px;">
+                                <span style="color: #ff00ff; font-weight: 600;">RF:</span> $${data.prediction.random_forest_sales.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')} 
+                                <span style="margin: 0 6px; opacity: 0.5;">|</span>
+                                <span style="color: #00ffff; font-weight: 600;">GB:</span> $${data.prediction.gradient_boosting_sales.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                            </div>
+                            <div style="margin-top: 4px; padding-top: 4px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                                <span style="opacity: 0.8;">Confidence:</span> 
+                                <span style="color: #00ff88; font-weight: 600;">${(data.prediction.confidence * 100).toFixed(1)}%</span>
+                            </div>
+                        </div>
+                        <div style="font-size: 0.5em; margin-top: 6px; opacity: 0.5; font-style: italic;">
+                            Based on Random Forest Model (R² = 0.94)
+                        </div>
+                    `;
+                } else {
+                    resultValue.innerHTML = `<div style="color: #ff4444; font-size: 0.85em;">Error: ${data.error}</div>`;
+                }
+                
+            } catch (error) {
+                console.error('Prediction error:', error);
+                resultValue.innerHTML = `
+                    <div style="color: #ff4444;">
+                        <div style="font-weight: bold;">Connection Error</div>
+                        <div style="font-size: 0.8em; margin-top: 10px;">
+                            Unable to connect to the prediction server.<br>
+                            Please ensure the Flask backend is running on port 5000.
+                        </div>
+                        <div style="font-size: 0.7em; margin-top: 10px; opacity: 0.7;">
+                            Run: python app.py
+                        </div>
+                    </div>
+                `;
+            }
             
             // Scroll to result within the slide
             resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });

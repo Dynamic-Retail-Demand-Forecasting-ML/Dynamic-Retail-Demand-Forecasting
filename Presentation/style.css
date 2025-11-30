@@ -1258,10 +1258,12 @@ body:hover .controls {
 .compact-table .table-header {
     padding: 15px 25px; /* Reduced top/bottom padding */
     font-size: 1.1rem; /* Slightly smaller font */
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .compact-table .table-row {
     padding: 12px 25px; /* Reduced top/bottom padding significantly */
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .compact-table .table-row .col {
@@ -1918,27 +1920,20 @@ body.hide-cursor, body.hide-cursor * {
     position: absolute;
     bottom: 30px;
     right: 30px;
-    background: rgba(30, 10, 40, 0.8);
-    border: 1px solid #ff00cc;
+    background: transparent;
+    border: none;
     color: #ff00cc;
-    padding: 10px 25px;
-    border-radius: 4px;
+    padding: 10px;
     cursor: pointer;
-    font-weight: 700;
-    font-size: 1rem;
     transition: all 0.3s;
-    text-transform: uppercase;
-    letter-spacing: 2px;
     z-index: 10;
-    backdrop-filter: blur(5px);
-    font-family: 'Orbitron', sans-serif;
-    box-shadow: 0 0 10px rgba(255, 0, 204, 0.2);
+    opacity: 0.7;
 }
 
 .view-code-btn:hover {
-    background: #ff00cc;
-    color: #fff;
-    box-shadow: 0 0 20px rgba(255, 0, 204, 0.6);
+    opacity: 1;
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 10px rgba(255, 0, 204, 0.6));
 }
 
 /* Problem Statement Slide Styles */
@@ -2461,3 +2456,18 @@ body.hide-cursor, body.hide-cursor * {
     object-fit: contain;
 }
 
+
+/* Image Slide Styles */
+.image-slide {
+    background-color: #050528; /* Deep dark blue to match website theme */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-slide img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}

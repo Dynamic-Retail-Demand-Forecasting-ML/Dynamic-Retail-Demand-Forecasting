@@ -293,7 +293,12 @@
                     </div>
                 </div>
                 
-                <button id="viewCodeBtn" class="view-code-btn">Code</button>
+                <button id="viewCodeBtn" class="view-code-btn">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </button>
             </div>
         </div>
         <!-- Slide 7: End-to-End Workflow Architecture -->
@@ -677,56 +682,56 @@
                     
                     <div class="table-row">
                         <div class="col">Linear Regression</div>
-                        <div class="col">10347.62</div>
-                        <div class="col">8167.00</div>
-                        <div class="col">0.4408</div>
+                        <div class="col">17603.12</div>
+                        <div class="col">12160.54</div>
+                        <div class="col">0.0434</div>
                     </div>
                     
                     <div class="table-row">
                         <div class="col">Ridge Regression</div>
-                        <div class="col">10347.64</div>
-                        <div class="col">8166.21</div>
-                        <div class="col">0.4408</div>
+                        <div class="col">17603.02</div>
+                        <div class="col">12160.57</div>
+                        <div class="col">0.0434</div>
                     </div>
                     
                     <div class="table-row">
                         <div class="col">Lasso Regression</div>
-                        <div class="col">10347.66</div>
-                        <div class="col">8166.92</div>
-                        <div class="col">0.4408</div>
+                        <div class="col">17603.09</div>
+                        <div class="col">12160.53</div>
+                        <div class="col">0.0434</div>
                     </div>
                     
                     <div class="table-row">
                         <div class="col">Linear SVR</div>
-                        <div class="col">12728.62</div>
-                        <div class="col">10912.96</div>
-                        <div class="col">0.0428</div>
+                        <div class="col">21380.82</div>
+                        <div class="col">12927.75</div>
+                        <div class="col">-0.4113</div>
                     </div>
                     
                     <div class="table-row">
                         <div class="col">Decision Tree</div>
-                        <div class="col">4567.22</div>
-                        <div class="col">2890.20</div>
-                        <div class="col">0.8111</div>
+                        <div class="col">6157.99</div>
+                        <div class="col">4013.82</div>
+                        <div class="col">0.8829</div>
                     </div>
                     
                     <div class="table-row highlight">
                         <div class="col">Random Forest</div>
-                        <div class="col">3321.36</div>
-                        <div class="col">1708.86</div>
-                        <div class="col">0.9424</div>
+                        <div class="col">5466.00</div>
+                        <div class="col">3220.58</div>
+                        <div class="col">0.9078</div>
                     </div>
                     
                     <div class="table-row">
                         <div class="col">Gradient Boosting</div>
-                        <div class="col">3984.29</div>
-                        <div class="col">4936.44</div>
-                        <div class="col">0.8100</div>
+                        <div class="col">6949.27</div>
+                        <div class="col">4319.22</div>
+                        <div class="col">0.8509</div>
                     </div>
                 </div>
 
                 <div class="winner-banner">
-                    Best Regression Model: Random Forest (R²: 0.9424)
+                    Best Regression Model: Random Forest (R²: 0.9078)
                 </div>
             </div>
         </div>
@@ -738,82 +743,93 @@
                 
                 <div class="custom-table compact-table">
                     <div class="table-header">
-                        <div class="col">Model Name</div>
-                        <div class="col">Accuracy</div>
+                        <div class="col">Model</div>
+                        <div class="col">CV Acc</div>
+                        <div class="col">Test Acc</div>
                         <div class="col">Precision</div>
+                        <div class="col">Recall</div>
                         <div class="col">F1 Score</div>
                     </div>
                     
                     <div class="table-row">
-                        <div class="col">KNN</div>
-                        <div class="col">0.9470</div>
-                        <div class="col">0.8148</div>
-                        <div class="col">0.3143</div>
-                    </div>
-                    
-                    <div class="table-row">
                         <div class="col">Logistic Regression</div>
-                        <div class="col">0.9600</div>
-                        <div class="col">1.0000</div>
-                        <div class="col">0.6667</div>
+                        <div class="col">0.7849</div>
+                        <div class="col">0.7801</div>
+                        <div class="col">0.7297</div>
+                        <div class="col">0.1915</div>
+                        <div class="col">0.3034</div>
                     </div>
                     
                     <div class="table-row">
                         <div class="col">LDA</div>
-                        <div class="col">0.9350</div>
-                        <div class="col">0.6471</div>
-                        <div class="col">0.1571</div>
+                        <div class="col">0.7565</div>
+                        <div class="col">0.7589</div>
+                        <div class="col">0.5309</div>
+                        <div class="col">0.3050</div>
+                        <div class="col">0.3874</div>
                     </div>
                     
                     <div class="table-row">
                         <div class="col">Naive Bayes</div>
-                        <div class="col">0.8929</div>
-                        <div class="col">0.2941</div>
-                        <div class="col">0.1857</div>
+                        <div class="col">0.7642</div>
+                        <div class="col">0.7589</div>
+                        <div class="col">0.5309</div>
+                        <div class="col">0.3050</div>
+                        <div class="col">0.3874</div>
                     </div>
                     
                     <div class="table-row">
                         <div class="col">Linear SVC</div>
-                        <div class="col">0.9388</div>
-                        <div class="col">0.8888</div>
-                        <div class="col">0.0888</div>
+                        <div class="col">0.7766</div>
+                        <div class="col">0.7624</div>
+                        <div class="col">0.5745</div>
+                        <div class="col">0.1915</div>
+                        <div class="col">0.2872</div>
                     </div>
                     
                     <div class="table-row highlight">
                         <div class="col">Decision Tree</div>
-                        <div class="col">1.0000</div>
-                        <div class="col">1.0000</div>
-                        <div class="col">1.0000</div>
+                        <div class="col">0.8730</div>
+                        <div class="col">0.8617</div>
+                        <div class="col">0.7234</div>
+                        <div class="col">0.7234</div>
+                        <div class="col">0.7234</div>
                     </div>
                     
                     <div class="table-row">
                         <div class="col">Random Forest</div>
-                        <div class="col">1.0000</div>
-                        <div class="col">1.0000</div>
-                        <div class="col">1.0000</div>
+                        <div class="col">0.8529</div>
+                        <div class="col">0.8794</div>
+                        <div class="col">0.8687</div>
+                        <div class="col">0.6099</div>
+                        <div class="col">0.7167</div>
                     </div>
                     
                     <div class="table-row">
                         <div class="col">AdaBoost</div>
-                        <div class="col">1.0000</div>
-                        <div class="col">1.0000</div>
-                        <div class="col">1.0000</div>
+                        <div class="col">0.8168</div>
+                        <div class="col">0.8067</div>
+                        <div class="col">0.7051</div>
+                        <div class="col">0.3901</div>
+                        <div class="col">0.5023</div>
                     </div>
 
                     <div class="table-row">
                         <div class="col">Gradient Boosting</div>
-                        <div class="col">1.0000</div>
-                        <div class="col">1.0000</div>
-                        <div class="col">1.0000</div>
+                        <div class="col">0.7500</div>
+                        <div class="col">0.7500</div>
+                        <div class="col">0.6200</div>
+                        <div class="col">0.6200</div>
+                        <div class="col">0.6200</div>
                     </div>
                 </div>
 
                 <div class="winner-banner">
-                    Best Classification Model: Decision Tree (F1: 1.0000)
+                    Best Classification Model: Decision Tree (F1: 0.7234)
                 </div>
             </div>
         </div>
-        <img src="Slide13.PNG" class="slide" alt="Slide 13">
+
         <!-- Slide: Classification Excellence & Strategic Insights -->
         <div class="slide classification-insights-slide">
             <div class="insights-container">
@@ -894,6 +910,25 @@
             </div>
         </div>
 
+        <div class="slide image-slide">
+            <img src="image10.jpg" alt="Slide 10">
+        </div>
+        <div class="slide image-slide">
+            <img src="image11.jpg" alt="Slide 11">
+        </div>
+        <div class="slide image-slide">
+            <img src="image6.jpg" alt="Slide 6">
+        </div>
+        <div class="slide image-slide">
+            <img src="image7.jpg" alt="Slide 7">
+        </div>
+        <div class="slide image-slide">
+            <img src="image8.jpg" alt="Slide 8">
+        </div>
+        <div class="slide image-slide">
+            <img src="image9.jpg" alt="Slide 9">
+        </div>
+        
         <!-- Slide 14: Conclusion -->
         <div class="slide conclusion-slide">
             <div class="conclusion-container">
