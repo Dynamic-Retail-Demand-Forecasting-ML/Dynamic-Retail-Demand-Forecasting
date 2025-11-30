@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             try {
                 // Call Flask API for prediction
-                const response = await fetch('http://localhost:5000/api/predict', {
+                const response = await fetch('https://dynamic-retail-demand-forecasting-2.onrender.com/api/predict', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -197,10 +197,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div style="font-weight: bold;">Connection Error</div>
                         <div style="font-size: 0.8em; margin-top: 10px;">
                             Unable to connect to the prediction server.<br>
-                            Please ensure the Flask backend is running on port 5000.
+                            Unable to connect to the prediction server.<br>
+                            The backend service might be waking up (it takes ~50s on free tier).
                         </div>
                         <div style="font-size: 0.7em; margin-top: 10px; opacity: 0.7;">
-                            Run: python app.py
+                            Please try again in a minute.
                         </div>
                     </div>
                 `;
