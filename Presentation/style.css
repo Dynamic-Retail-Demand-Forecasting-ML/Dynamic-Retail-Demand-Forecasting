@@ -312,53 +312,125 @@ body:hover .controls {
 
 /* Thank You Slide */
 .thank-you-slide {
-    background: #000; /* Match presentation background */
+    background: radial-gradient(circle at center, #0b0b15 0%, #161625 50%, #1a0b2e 100%);
     display: flex;
-    flex-direction: column; /* Stack items vertically */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #ff00cc; /* Neon pink color */
+    color: #fff;
+    /* position: relative; REMOVED to fix layout issue, inherits absolute from .slide */
+    overflow: hidden;
+    z-index: 10; /* Ensure it's on top when active */
+}
+
+/* Animated Grid Background Effect */
+.thank-you-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(255, 0, 204, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 204, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: -1; /* Move behind content */
+    animation: gridPulse 8s infinite alternate;
+}
+
+/* Central Glow Orb */
+.thank-you-slide::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(170, 0, 204, 0.15) 0%, transparent 70%);
+    z-index: -1; /* Move behind content */
+    pointer-events: none;
+    animation: orbFloat 10s infinite ease-in-out;
+}
+
+@keyframes gridPulse {
+    0% { opacity: 0.3; }
+    100% { opacity: 0.6; }
+}
+
+@keyframes orbFloat {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
 }
 
 .thank-you-wrapper {
-    width: 55ch; /* Increased width significantly to fit cursive text */
-    /* Ensure the wrapper is centered in the flex container */
+    z-index: 2;
     display: flex;
-    justify-content: center; /* Center the text block */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: transparent;
+    transform: scale(0.9);
+    opacity: 0;
+    animation: zoomInFade 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .thank-you-text {
-    font-family: 'Brush Script MT', 'Cursive', cursive; /* Cursive font */
-    font-size: 8rem;
-    white-space: nowrap;
-    overflow: hidden; /* Ensures the content is not revealed until the animation */
-    border-right: .05em solid #ff00cc; /* Thinner cursor matching the text color */
-    width: 0;
-    animation: 
-        typing 2s steps(40, end) forwards,
-        blink-caret .75s step-end 5 forwards;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 7rem; /* Slightly smaller to ensure fit */
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 12px;
+    color: #fff;
+    margin: 0;
+    text-align: center;
+    line-height: 1.1;
+    
+    /* Neon Text Effect */
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 20px rgba(255, 0, 204, 0.5),
+        0 0 40px rgba(255, 0, 204, 0.3);
+        
+    background: linear-gradient(to bottom, #ffffff 0%, #ffccff 50%, #ff00cc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
 }
 
-.questions-wrapper {
-    width: 49ch; /* Adjusted to fit "Any Questions?" */
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+/* Reflection/Glow under text */
+.thank-you-text::after {
+    content: 'Thank You';
+    position: absolute;
+    top: 85%; /* Adjusted for better overlap */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255, 0, 204, 0.15) 0%, transparent 50%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: scaleY(-1) skewX(-10deg);
+    opacity: 0.3; /* More subtle */
+    filter: blur(4px);
+    pointer-events: none;
+    z-index: -1;
 }
 
-.questions-text {
-    font-family: 'Brush Script MT', 'Cursive', cursive;
-    font-size: 5rem;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: .05em solid #ff00cc;
-    width: 0;
-    /* Start invisible */
-    opacity: 0; 
-    animation: 
-        appear 0s 3.5s forwards, /* Make visible after delay */
-        typing 2s steps(40, end) 3.5s forwards, /* Start typing after delay */
-        blink-caret .75s step-end 3.5s 5 forwards;
+@keyframes zoomInFade {
+    0% {
+        transform: scale(0.8) translateY(30px);
+        opacity: 0;
+        filter: blur(10px);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+        filter: blur(0);
+    }
 }
 
 /* Graph Slide Styles */

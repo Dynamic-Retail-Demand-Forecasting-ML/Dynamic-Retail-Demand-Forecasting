@@ -13,8 +13,7 @@
 
     <!-- Slides Container -->
     <div class="slides-container">
-        <!-- 
-            PLACEHOLDER SLIDES 
+        <!-- PLACEHOLDER SLIDES -->
         <!-- Slide 1: Title Slide (Recreated) -->
         <div class="slide title-slide active">
             <div class="title-slide-layout">
@@ -143,164 +142,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Slide 3: Dataset Architecture -->
-        <div class="slide dataset-slide">
-            <div class="dataset-container">
-                <div class="dataset-left-panel">
-                    <h2 class="slide-title">Dataset Architecture & Feature Engineering</h2>
-                    <p class="section-subtitle">Data Sources</p>
-                    
-                    <div class="data-cards-row">
-                        <div class="data-card">
-                            <h3>train.csv</h3>
-                            <p>Historical weekly sales data capturing transaction volumes across stores and departments over multiple years.</p>
-                            <span class="attributes">(Store, Date, IsHoliday, Weekly_Sales, Dept)</span>
-                        </div>
-                        
-                        <div class="data-card">
-                            <h3>features.csv</h3>
-                            <p>Economic indicators including temperature, fuel prices, CPI, and unemployment rates that influence purchasing behavior.</p>
-                            <span class="attributes">(Store, Date, IsHoliday, Temperature, Fuel_Price, CPI, Unemployment)</span>
-                        </div>
-                    </div>
-                    
-                    <div class="data-card full-width">
-                        <h3>stores.csv</h3>
-                        <p>Store metadata containing type classifications, sizes, and regional characteristics for location-based analysis.</p>
-                        <span class="attributes">(Store, Type, Size)</span>
-                    </div>
+        </div>      
 
-                    <div class="pipeline-section">
-                        <h3>Engineering Pipeline</h3>
-                        <p class="sample-size"><strong>Sample size:</strong> ~5,000 optimized rows</p>
-                        <ul class="pipeline-list">
-                            <li>Date decomposition into Year, Month, Week components</li>
-                            <li>Categorical encoding for Store Type & Holiday flags</li>
-                            <li>Missing value imputation using domain knowledge</li>
-                            <li>Numerical feature scaling for algorithm optimization</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="dataset-right-panel">
-                    <div class="image-glow-container">
-                        <img src="image3.png" alt="Dataset Architecture Visualization">
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Prediction Interface Slide -->
-        <div class="slide prediction-slide">
-            <div class="prediction-container">
-                <div class="prediction-header">
-                    <h2>Dynamic Retail Demand Forecasting System</h2>
-                    <p>Interactive ML-Powered Demand Forecasting</p>
-                </div>
-                
-                <div class="prediction-content-scroll">
-                    <form id="predictionForm">
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="store">Store Number</label>
-                                <input type="number" id="store" value="1" min="1" max="45" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="dept">Department</label>
-                                <input type="number" id="dept" value="1" min="1" max="99" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="temperature">Temperature (°F)</label>
-                                <input type="number" id="temperature" value="70" step="0.1" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="fuelPrice">Fuel Price ($)</label>
-                                <input type="number" id="fuelPrice" value="3.5" step="0.01" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="cpi">CPI</label>
-                                <input type="number" id="cpi" value="210" step="0.1" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="unemployment">Unemployment (%)</label>
-                                <input type="number" id="unemployment" value="7.5" step="0.1" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="storeType">Store Type</label>
-                                <select id="storeType" required>
-                                    <option value="A">Type A (Large)</option>
-                                    <option value="B">Type B (Medium)</option>
-                                    <option value="C">Type C (Small)</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="storeSize">Store Size (sq ft)</label>
-                                <input type="number" id="storeSize" value="150000" step="1000" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="year">Year</label>
-                                <input type="number" id="year" value="2025" min="2010" max="2030" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="month">Month</label>
-                                <select id="month" required>
-                                    <option value="1">January</option>
-                                    <option value="2">February</option>
-                                    <option value="3">March</option>
-                                    <option value="4">April</option>
-                                    <option value="5">May</option>
-                                    <option value="6">June</option>
-                                    <option value="7">July</option>
-                                    <option value="8">August</option>
-                                    <option value="9">September</option>
-                                    <option value="10">October</option>
-                                    <option value="11">November</option>
-                                    <option value="12" selected>December</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="week">Week Number</label>
-                                <input type="number" id="week" value="50" min="1" max="52" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="isHoliday">Is Holiday?</label>
-                                <select id="isHoliday" required>
-                                    <option value="0">No</option>
-                                    <option value="1" selected>Yes</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <button type="submit" class="predict-btn">🔮 Predict Sales</button>
-                    </form>
-                    
-                    <div id="resultBox" class="result-display">
-                        <h3>Predicted Weekly Sales</h3>
-                        <div class="result-value" id="resultValue">$0.00</div>
-                        <p>Based on Random Forest Model (R² = 0.94)</p>
-                    </div>
-                </div>
-                
-                <button id="viewCodeBtn" class="view-code-btn">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
-                </button>
-            </div>
-        </div>
         <!-- Slide 7: End-to-End Workflow Architecture -->
         <!-- Slide 7: End-to-End Workflow Architecture -->
         <div class="slide workflow-slide">
@@ -377,6 +220,54 @@
                 </div>
             </div>
         </div>
+
+        <!-- Slide 3: Dataset Architecture -->
+        <div class="slide dataset-slide">
+            <div class="dataset-container">
+                <div class="dataset-left-panel">
+                    <h2 class="slide-title">Dataset Architecture & Feature Engineering</h2>
+                    <p class="section-subtitle">Data Sources</p>
+                    
+                    <div class="data-cards-row">
+                        <div class="data-card">
+                            <h3>train.csv</h3>
+                            <p>Historical weekly sales data capturing transaction volumes across stores and departments over multiple years.</p>
+                            <span class="attributes">(Store, Date, IsHoliday, Weekly_Sales, Dept)</span>
+                        </div>
+                        
+                        <div class="data-card">
+                            <h3>features.csv</h3>
+                            <p>Economic indicators including temperature, fuel prices, CPI, and unemployment rates that influence purchasing behavior.</p>
+                            <span class="attributes">(Store, Date, IsHoliday, Temperature, Fuel_Price, CPI, Unemployment)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="data-card full-width">
+                        <h3>stores.csv</h3>
+                        <p>Store metadata containing type classifications, sizes, and regional characteristics for location-based analysis.</p>
+                        <span class="attributes">(Store, Type, Size)</span>
+                    </div>
+
+                    <div class="pipeline-section">
+                        <h3>Engineering Pipeline</h3>
+                        <p class="sample-size"><strong>Sample size:</strong> ~5,000 optimized rows</p>
+                        <ul class="pipeline-list">
+                            <li>Date decomposition into Year, Month, Week components</li>
+                            <li>Categorical encoding for Store Type & Holiday flags</li>
+                            <li>Missing value imputation using domain knowledge</li>
+                            <li>Numerical feature scaling for algorithm optimization</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="dataset-right-panel">
+                    <div class="image-glow-container">
+                        <img src="image3.png" alt="Dataset Architecture Visualization">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <!-- Slide 8: Comprehensive Algorithm Suite -->
         <div class="slide algorithm-slide">
             <div class="algorithm-container">
@@ -436,44 +327,37 @@
                     <!-- Classification Models -->
                     <div class="algorithm-column">
                         <h3 class="column-header">Classification Models</h3>
-                        <p class="column-sub">Nine algorithms for holiday detection:</p>
+                        <p class="column-sub">Eight algorithms for holiday detection:</p>
                         <ul class="algorithm-list">
                             <li class="algo-item" style="--delay: 0.2s">
-                                <div class="algo-dot"></div>
-                                <div class="algo-content">
-                                    <strong>K-Nearest Neighbors</strong>
-                                    <span>Distance-based pattern recognition</span>
-                                </div>
-                            </li>
-                            <li class="algo-item" style="--delay: 0.3s">
                                 <div class="algo-dot"></div>
                                 <div class="algo-content">
                                     <strong>Logistic Regression</strong>
                                     <span>Probabilistic binary classification</span>
                                 </div>
                             </li>
-                            <li class="algo-item" style="--delay: 0.4s">
+                            <li class="algo-item" style="--delay: 0.3s">
                                 <div class="algo-dot"></div>
                                 <div class="algo-content">
                                     <strong>Linear Discriminant Analysis</strong>
                                     <span>Dimensional reduction classifier</span>
                                 </div>
                             </li>
-                            <li class="algo-item" style="--delay: 0.5s">
+                            <li class="algo-item" style="--delay: 0.4s">
                                 <div class="algo-dot"></div>
                                 <div class="algo-content">
                                     <strong>Naive Bayes</strong>
                                     <span>Probabilistic Bayesian approach</span>
                                 </div>
                             </li>
-                            <li class="algo-item" style="--delay: 0.6s">
+                            <li class="algo-item" style="--delay: 0.5s">
                                 <div class="algo-dot"></div>
                                 <div class="algo-content">
                                     <strong>Support Vector Classifier</strong>
                                     <span>Maximum margin separation</span>
                                 </div>
                             </li>
-                            <li class="algo-item" style="--delay: 0.7s">
+                            <li class="algo-item" style="--delay: 0.6s">
                                 <div class="algo-dot"></div>
                                 <div class="algo-content">
                                     <strong>Decision Tree, Random Forest,<br>AdaBoost, Gradient Boosting</strong>
@@ -595,25 +479,25 @@
                         <!-- Linear Regression -->
                         <div class="bar-group">
                             <div class="bar rmse" style="--width: 88%;"></div>
-                            <div class="bar mae" style="--width: 58%;"></div>
+                            <div class="bar mae" style="--width: 61%;"></div>
                         </div>
                         
                         <!-- Ridge Regression -->
                         <div class="bar-group">
-                            <div class="bar rmse" style="--width: 87%;"></div>
-                            <div class="bar mae" style="--width: 57%;"></div>
+                            <div class="bar rmse" style="--width: 88%;"></div>
+                            <div class="bar mae" style="--width: 61%;"></div>
                         </div>
                         
                         <!-- Decision Tree -->
                         <div class="bar-group">
-                            <div class="bar rmse" style="--width: 76%;"></div>
-                            <div class="bar mae" style="--width: 48%;"></div>
+                            <div class="bar rmse" style="--width: 31%;"></div>
+                            <div class="bar mae" style="--width: 20%;"></div>
                         </div>
                         
                         <!-- Random Forest -->
                         <div class="bar-group">
-                            <div class="bar rmse" style="--width: 55%;"></div>
-                            <div class="bar mae" style="--width: 30%;"></div>
+                            <div class="bar rmse" style="--width: 27%;"></div>
+                            <div class="bar mae" style="--width: 16%;"></div>
                         </div>
                         
                         <!-- X-Axis Lines -->
@@ -627,9 +511,10 @@
                         <!-- X-Axis Labels -->
                         <div class="x-axis">
                             <span>0</span>
-                            <span>2,000</span>
-                            <span>4,000</span>
-                            <span>6,000</span>
+                            <span>5,000</span>
+                            <span>10,000</span>
+                            <span>15,000</span>
+                            <span>20,000</span>
                         </div>
                     </div>
                 </div>
@@ -643,17 +528,17 @@
                 <!-- Key Metrics -->
                 <div class="metrics-container">
                     <div class="metric-box">
-                        <div class="metric-value">0.94</div>
+                        <div class="metric-value">0.91</div>
                         <div class="metric-label">R² Score</div>
-                        <div class="metric-sub">Random Forest explains 94% of sales variance</div>
+                        <div class="metric-sub">Random Forest explains 91% of sales variance</div>
                     </div>
                     <div class="metric-box">
-                        <div class="metric-value">36%</div>
+                        <div class="metric-value">69%</div>
                         <div class="metric-label">Error Reduction</div>
                         <div class="metric-sub">Compared to linear baseline approaches</div>
                     </div>
                     <div class="metric-box">
-                        <div class="metric-value">3,321</div>
+                        <div class="metric-value">5,466</div>
                         <div class="metric-label">Lowest RMSE</div>
                         <div class="metric-sub">Best-in-class prediction accuracy</div>
                     </div>
@@ -843,24 +728,24 @@
                                 <div class="model-number">1</div>
                                 <div class="model-details">
                                     <h4>Decision Tree</h4>
-                                    <p class="model-stats">Accuracy: 1 | F1: 1</p>
-                                    <p class="model-desc">Exceptional with imbalanced data, high interpretability</p>
+                                    <p class="model-stats">Accuracy: 86.17% | F1: 72.34%</p>
+                                    <p class="model-desc">Top performer (Best F1), effectively balancing precision and recall.</p>
                                 </div>
                             </div>
                             <div class="model-item">
                                 <div class="model-number">2</div>
                                 <div class="model-details">
                                     <h4>Random Forest</h4>
-                                    <p class="model-stats">Accuracy: 1 | F1: 1</p>
-                                    <p class="model-desc">Fast, interpretable baseline</p>
+                                    <p class="model-stats">Accuracy: 87.94% | F1: 71.67%</p>
+                                    <p class="model-desc">Highest overall accuracy, demonstrating robust ensemble power.</p>
                                 </div>
                             </div>
                             <div class="model-item">
                                 <div class="model-number">3</div>
                                 <div class="model-details">
-                                    <h4>Gradient Boosting / AdaBoost</h4>
-                                    <p class="model-stats">Accuracy: 1 | F1: 1</p>
-                                    <p class="model-desc">Strong local pattern detection</p>
+                                    <h4>Gradient Boosting</h4>
+                                    <p class="model-stats">Accuracy: 75.00% | F1: 62.00%</p>
+                                    <p class="model-desc">Strong generalization capabilities with consistent metrics.</p>
                                 </div>
                             </div>
                         </div>
@@ -911,16 +796,16 @@
         </div>
 
         <div class="slide image-slide">
+            <img src="image7.jpg" alt="Slide 6">
+        </div>
+        <div class="slide image-slide">
             <img src="image10.jpg" alt="Slide 10">
         </div>
         <div class="slide image-slide">
+            <img src="image6.jpg" alt="Slide 7">
+        </div>
+        <div class="slide image-slide">
             <img src="image11.jpg" alt="Slide 11">
-        </div>
-        <div class="slide image-slide">
-            <img src="image6.jpg" alt="Slide 6">
-        </div>
-        <div class="slide image-slide">
-            <img src="image7.jpg" alt="Slide 7">
         </div>
         <div class="slide image-slide">
             <img src="image8.jpg" alt="Slide 8">
@@ -949,8 +834,117 @@
             <div class="thank-you-wrapper">
                 <h1 class="thank-you-text">Thank You</h1>
             </div>
-            <div class="questions-wrapper">
-                <h2 class="questions-text">Any Questions?</h2>
+
+        </div>
+
+        <!-- Prediction Interface Slide -->
+        <div class="slide prediction-slide">
+            <div class="prediction-container">
+                <div class="prediction-header">
+                    <h2>Dynamic Retail Demand Forecasting System</h2>
+                    <p>Interactive ML-Powered Demand Forecasting</p>
+                </div>
+                
+                <div class="prediction-content-scroll">
+                    <form id="predictionForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="store">Store Number</label>
+                                <input type="number" id="store" value="1" min="1" max="45" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="dept">Department</label>
+                                <input type="number" id="dept" value="1" min="1" max="99" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="temperature">Temperature (°F)</label>
+                                <input type="number" id="temperature" value="70" step="0.1" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="fuelPrice">Fuel Price ($)</label>
+                                <input type="number" id="fuelPrice" value="3.5" step="0.01" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="cpi">CPI</label>
+                                <input type="number" id="cpi" value="210" step="0.1" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="unemployment">Unemployment (%)</label>
+                                <input type="number" id="unemployment" value="7.5" step="0.1" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="storeType">Store Type</label>
+                                <select id="storeType" required>
+                                    <option value="A">Type A (Large)</option>
+                                    <option value="B">Type B (Medium)</option>
+                                    <option value="C">Type C (Small)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="storeSize">Store Size (sq ft)</label>
+                                <input type="number" id="storeSize" value="150000" step="1000" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="year">Year</label>
+                                <input type="number" id="year" value="2025" min="2010" max="2030" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="month">Month</label>
+                                <select id="month" required>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12" selected>December</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="week">Week Number</label>
+                                <input type="number" id="week" value="50" min="1" max="52" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="isHoliday">Is Holiday?</label>
+                                <select id="isHoliday" required>
+                                    <option value="0">No</option>
+                                    <option value="1" selected>Yes</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="predict-btn">🔮 Predict Sales</button>
+                    </form>
+                    
+                    <div id="resultBox" class="result-display">
+                        <h3>Predicted Weekly Sales</h3>
+                        <div class="result-value" id="resultValue">$0.00</div>
+                        <p>Based on Random Forest Model (R² = 0.94)</p>
+                    </div>
+                </div>
+                
+                <button id="viewCodeBtn" class="view-code-btn">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </button>
             </div>
         </div>
     </div>

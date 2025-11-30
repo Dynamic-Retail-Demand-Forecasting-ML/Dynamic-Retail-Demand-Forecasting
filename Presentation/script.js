@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         </div>
                         <div style="font-size: 0.5em; margin-top: 6px; opacity: 0.5; font-style: italic;">
-                            Based on Random Forest Model (R² = 0.94)
+                            Based on Random Forest Model (R² = 0.91)
                         </div>
                     `;
                 } else {
