@@ -10,7 +10,6 @@
 [![Flask](https://img.shields.io/badge/Flask-3.0.0-green)](https://flask.palletsprojects.com/)
 [![Frontend](https://img.shields.io/badge/Frontend-HTML%2FCSS%2FJS-orange)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 
-<img src="Presentation/image1.png" alt="Project Banner" width="100%" style="border-radius: 10px; box-shadow: 0 0 20px rgba(255, 0, 204, 0.5);">
 
 </div>
 
